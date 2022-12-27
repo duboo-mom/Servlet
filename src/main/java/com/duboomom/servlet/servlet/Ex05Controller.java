@@ -15,8 +15,8 @@ public class Ex05Controller extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		// 윈도우에서만 ...MS949로 인코딩해서
 		// get에서는 url 인코딩이 따로있어서 신경안써도 됐지만..
-		request.setCharacterEncoding("utf-8");		
-		response.setCharacterEncoding("utf-8");
+
+		// config filter 파일로 통합~
 		response.setContentType("text/html");
 		
 		PrintWriter out = response.getWriter();
