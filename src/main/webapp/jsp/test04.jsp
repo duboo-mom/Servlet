@@ -13,45 +13,31 @@
 </head>
 <body>
 	
+	<%-- 선생님 풀이로 변경 --%>
 	<%
-		String number1String = request.getParameter("number1");
-		String number2String = request.getParameter("number2");
-		
+		int number1 = Integer.parseInt(request.getParameter("number1"));
+		int number2 = Integer.parseInt(request.getParameter("number2"));
+	
+		// +, -,X , /
 		String calculate = request.getParameter("calculate");
-		
-		int number1 = Integer.parseInt(number1String);
-		int number2 = Integer.parseInt(number2String);
-		
-		String equation = "";
-		
-		double result = 0;		
-		
-		if(calculate.equals("add")) {
-			equation = number1String + " + " + number2String;
-			result = (double)number1 + number2;
-		} else if(calculate.equals("sub")) {
-			equation = number1String + " - " + number2String;
-			result = (double)number1 - number2;
-		} else if(calculate.equals("mul")) {
-			equation = number1String + " X " + number2String;
-			result = (double)number1 * number2;
-		} else if(calculate.equals("div")) {
-			equation = number1String + " / " + number2String;
-			result = (double)number1 / number2;
+		double result = 0;
+		if(calculate.equals("+")) {
+			result = number1 + number2;
+		} else if(calculate.equals("-")) {
+			result = number1 - number2;
+		} else if(calculate.equals("X")) {
+			result = number1 * number2;
+		} else if(calculate.equals("/")) {
+			result = number1 / (double)number2;
 		}
-		
+	
 	%>
+	
 
-	<div class="container">
-		<h5>계산 결과</h5>
-		<div class="display-3"> <%= equation %> = <span class="text-primary"><%=result %></span></div>
+	<div>
+		<h1>계산 결과</h1>
+		<div class="display-4"><%= number1 %> <%= calculate %> <%= number2 %> = <span class="text-primary"><%= result %></span></div>
 	</div>
-
 	
-	
-	
-
-
-
 </body>
 </html>

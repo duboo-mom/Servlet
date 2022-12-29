@@ -14,19 +14,19 @@
 <body>
 	<div class="container">
 		
-		<h3>사칙 연산</h3>
+		<h1>사칙 연산</h1>
 
 		<form method="post" action="/jsp/test04.jsp">
 			<div class="d-flex">
-				<input type="text" name="number1" class="form-control col-4">
-				<select name="calculate" class="form-control col-2">
-					<option value="add">+</option>
-					<option value="sub">-</option>
-					<option value="mul">X</option>
-					<option value="div">/</option>	
+				<input type="text" name="number1" class="form-control col-2">
+				<select name="calculate" class="form-control col-1">
+					<option>+</option>
+					<option>-</option>
+					<option>X</option>
+					<option>/</option>	
 				</select>
-				<input type="text" name="number2" class="form-control col-4">			
-				<button type="submit" class="btn btn-success col-2">계산</button>
+				<input type="text" name="number2" class="form-control col-2">			
+				<button type="submit" class="btn btn-success col-1">계산</button>
 			
 			</div>
 		
