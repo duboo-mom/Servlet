@@ -15,6 +15,7 @@
 <body>
 	<%
 		List<Map<String, Object>> list = new ArrayList<>();
+		// 하나의 맵에서 value가 타입이 다르기 때문에 Object 사용
 	    Map<String, Object> map = new HashMap<String, Object>() {{ put("name", "버거킹"); put("menu", "햄버거"); put("point", 4.3); } };
 	    list.add(map);
 	    map = new HashMap<String, Object>() {{ put("name", "BBQ"); put("menu", "치킨"); put("point", 3.8); } };
@@ -47,21 +48,30 @@
 			</thead>
 			<tbody>
 			<% for(Map<String, Object> review:list) {
+				
+				double point = (Double) review.get("point");
+				
 				if(check.equals("on")) {
+					if(review.get("menu").equals(inputMenu) && point >= 4) {%>
+					<tr>
+						<td><%= review.get("menu")%></td>
+						<td><%= review.get("name")%></td>
+						<td><%= review.get("point")%></td>
+					</tr>
+					
+			<% 		}
+				} else {
 					if(review.get("menu").equals(inputMenu)) {%>
 					<tr>
 						<td><%= review.get("menu")%></td>
 						<td><%= review.get("name")%></td>
 						<td><%= review.get("point")%></td>
 					</tr>
-				
-				
-							
-			<% 		}
-				} else {
 					
+			<%		}
 				}
-			} %>
+			}%>
+			
 			</tbody>
 			
 		</table>
