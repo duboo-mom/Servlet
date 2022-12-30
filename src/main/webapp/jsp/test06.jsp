@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>변환 결과</title>
+<title>장 목록</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -14,43 +15,33 @@
 <body>
 
 	<%
-		// cm 단위, 변환할 단위들
-		int length = Integer.parseInt(request.getParameter("length"));
-		// 인치, 야드, 피트, 미터
-		// inch, yard, feet, meter
-		String[] units = request.getParameterValues("unit");
-	
-		String result = "";
-		
-		for(int i = 0; i < units.length; i++) {
-			if(units[i].equals("inch")) {
-				// 인치 변환
-				double inch = length * 0.39;
-				result += inch + "in <br>";
-				
-			} else if(units[i].equals("yard")) {
-				double yard = length * 0.0109361;
-				result += yard + "yd <br>";
-				
-			} else if(units[i].equals("feet")) {
-				double feet = length * 0.0328084;
-				result += feet + "ft <br>";
-				
-			} else if(units[i].equals("meter")) {
-				double meter = length / 100.0;
-				result += meter + "m <br>";
-			}
-		}
+		List<String> goodsList = Arrays.asList(new String[]{ 
+		    "저지방 우유", "요플레 4개", "딸기 1팩", "삼겹살 300g", "생수 6개", "주방 세제"
+		});
 	
 	%>
+	<div class="container">
 	
-	<div class="container">	
-		<h2>변환 결과</h2>
-		<h3><%= length %>cm</h3>
-		<hr>
-		<h3><%= result %></h3>
+		<h1 class="text-center">장 목록</h1>
+		
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>번호</th>
+					<th>품목</th>
+				</tr>	
+			</thead>
+			<tbody>
+			<% for(int i = 0; i < goodsList.size(); i++) { %>
+				<tr>
+					<td><%= i + 1 %></td>
+					<td><%= goodsList.get(i) %></td>
+				</tr>
+			<% } %>
+			</tbody>
+		</table>
+	
 	</div>
-
 
 </body>
 </html>

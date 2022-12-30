@@ -21,10 +21,10 @@
 				<span>cm</span>
 			</div>
 			<div>
-				<label>인치<input type="checkbox" name="unit" value="in"></label>
-				<label>야드<input type="checkbox" name="unit" value="yd"></label>
-				<label>피트<input type="checkbox" name="unit" value="ft"></label>
-				<label>미터<input type="checkbox" name="unit" value="m"></label>
+				<label>인치<input type="checkbox" name="unit" value="inch"></label>
+				<label>야드<input type="checkbox" name="unit" value="yard"></label>
+				<label>피트<input type="checkbox" name="unit" value="feet"></label>
+				<label>미터<input type="checkbox" name="unit" value="meter"></label>
 			</div>
 			
 			<button type="submit" class="btn btn-success">변환</button>
