@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>책 검색 결과</title>
+<title>책 목록</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -59,22 +59,34 @@
         } 
     };
     list.add(map);
+	
 	%>
 	
+	
 	<div class="container">
-		<div class="d-flex">
-			<img src="http://image.kyobobook.co.kr/images/book/xlarge/194/x9788972756194.jpg">
-			<div>
-				<div class="display-3 text-bold">나미야 잡화점의 기적</div>
-				<div class="text-info display-4">히가시노 게이고</div>
-				<div class="secondary display-4">현대문학</div>
-			</div>
-		</div>
+		<h1 class="text-center">책 목록</h1>
+		<table class="table text-center">
+			<thead>
+				<tr>
+					<th>id</th>
+					<th>표지</th>
+					<th>제목</th>
+				</tr>
+			</thead>
+			<tbody>
+			<% for(Map<String, Object> book:list) { %>
+				<tr>
+					<td><%= book.get("id") %></td>
+					<td><img width="100" src=<%= book.get("image") %>></td>
+					<td class="display-4 text-primary"><a href="/jsp/test08_detail.jsp?id=<%= book.get("id")%>"><%= book.get("title") %></a></td>
+				</tr>
+			<% } %>
+			</tbody>
+		
+		</table>
 	
 	</div>
-	
-	
-	
+
 
 </body>
 </html>

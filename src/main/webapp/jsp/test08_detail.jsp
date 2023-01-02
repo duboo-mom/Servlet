@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>책 목록</title>
+<title>책 검색 결과</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
@@ -59,34 +59,32 @@
         } 
     };
     list.add(map);
-	
+    
+    Integer id = Integer.parseInt(request.getParameter("id"));
+    
 	%>
 	
-	
 	<div class="container">
-		<h1 class="text-center">책 목록</h1>
-		<table class="table text-center">
-			<thead>
-				<tr>
-					<th>id</th>
-					<th>표지</th>
-					<th>제목</th>
-				</tr>
-			</thead>
-			<tbody>
-			<% for(Map<String, Object> book:list) { %>
-				<tr>
-					<td><%= book.get("id") %></td>
-					<td><img style="height:150px" src=<%= book.get("image") %>></td>
-					<td class="display-4 text-primary"><%= book.get("title") %></td>
-				</tr>
-			<%} %>
-			</tbody>
+		<div class="d-flex">
+		<%for(Map<String, Object> book:list) {
+
+			if(book.get("id").equals(id)) {%>
 		
-		</table>
+			<img class="mr-4" height="500" src="<%= book.get("image")%>">
+			<div>
+				<div class="display-1 font-weight-bold"><%= book.get("title")%></div>
+				<div class="text-info display-2"><%= book.get("author")%></div>
+				<div class="text-muted display-4"><%= book.get("publisher")%></div>
+			</div>
+		<%	} 
+		 }%>
+			
+		</div>
 	
 	</div>
-
+	
+	
+	
 
 </body>
 </html>
