@@ -32,7 +32,12 @@
 	    list.add(map);
 	    
 	    String inputMenu = request.getParameter("inputMenu");
-	    String check = request.getParameter("check");
+	    String pointFilter = request.getParameter("pointFilter");
+	    
+	    // null 일때 false라는 값을 넣어주는 조건
+	    if(pointFilter == null) {
+	    	pointFilter = "false";
+	    }
 	
 	%>
 
@@ -48,27 +53,30 @@
 			</thead>
 			<tbody>
 			<% for(Map<String, Object> review:list) {
+
 				
-				double point = (Double) review.get("point");
-				
-				if(check.equals("on")) {
-					if(review.get("menu").equals(inputMenu) && point >= 4) {%>
+				if(review.get("menu").equals(inputMenu)) {
+					
+					double point = (Double) review.get("point");
+					
+					// 앞에서부터 || 또는 이 if문에 있을 경우에는 앞에 조건이 true면 뒤에 확인도 안하고 넘어감
+					// if(pointFilter.equals("false") || pointFilter.equals("true") && point >= 4)
+						// 그래서 사실 false아니면 true니까 false가 아니면 ~ 사실 'pointFilter.equals("true")' 없어도 됨
+					//if(pointFilter.equals("false") || point >= 4.0) {
+					
+					// 아니면
+					// 포인터 필터가 true이고, 4.0 미만이면 보여주지 말아라
+					if(pointFilter.equals("true") && point < 4.0) {
+						continue;
+					}
+					%>
 					<tr>
 						<td><%= review.get("menu")%></td>
 						<td><%= review.get("name")%></td>
 						<td><%= review.get("point")%></td>
 					</tr>
-					
-			<% 		}
-				} else {
-					if(review.get("menu").equals(inputMenu)) {%>
-					<tr>
-						<td><%= review.get("menu")%></td>
-						<td><%= review.get("name")%></td>
-						<td><%= review.get("point")%></td>
-					</tr>
-					
-			<%		}
+
+			<%		//}
 				}
 			}%>
 			
