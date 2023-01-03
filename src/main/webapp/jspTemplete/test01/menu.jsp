@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 		<nav class="main-menu bg-danger">
 			<ul class="nav justify-content-around align-items-center">
-				<li class="nav-item"><a class="nav-link text-white" href="/jspTemplete/test01/test01.jsp?category=all">전체</a></li>
+				<li class="nav-item"><a class="nav-link text-white" href="/jspTemplete/test01/test01.jsp">전체</a></li>
 				<li class="nav-item"><a class="nav-link text-white" href="/jspTemplete/test01/test01.jsp?category=지상파">지상파</a></li>
 				<li class="nav-item"><a class="nav-link text-white" href="/jspTemplete/test01/test01.jsp?category=드라마">드라마</a></li>
 				<li class="nav-item"><a class="nav-link text-white" href="/jspTemplete/test01/test01.jsp?category=예능">예능</a></li>
