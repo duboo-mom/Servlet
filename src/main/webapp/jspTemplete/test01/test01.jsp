@@ -59,9 +59,9 @@
     
     String category = request.getParameter("category");
     
-    if(category == null) {
-    	category = "all";
-    }
+    //if(category == null) {
+    	//category = "all";
+    //}
     
 %>
 
@@ -79,22 +79,14 @@
 				</thead>
 				<tbody>
 				<%for(Map<String, String> channel:list) {
-					if(category.equals(channel.get("category"))) {
+					if(category == null || category.equals(channel.get("category"))) {
 				%>
-				
 					<tr>
 						<td><%= channel.get("ch") %></td>
 						<td><%= channel.get("name") %></td>
 						<td><%= channel.get("category") %></td>					
 					</tr>
 					
-				<%} else if(category.equals("all")) { %>
-				
-					<tr>
-						<td><%= channel.get("ch") %></td>
-						<td><%= channel.get("name") %></td>
-						<td><%= channel.get("category") %></td>					
-					</tr>
 				<%}
 				}
 				%>
