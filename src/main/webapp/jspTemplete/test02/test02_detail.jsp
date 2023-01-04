@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Melong - 아이유</title>
+<title>곡 정보</title>
 	
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 	
@@ -95,52 +95,56 @@
     musicInfo.put("composer", "아이유,이종훈,이채규");
     musicInfo.put("lyricist", "아이유");
     musicList.add(musicInfo);
+    
+    Integer songId = Integer.parseInt(request.getParameter("songId"));
 %>
-
 
 	<div class="container">
 		<jsp:include page="header.jsp" />
 		<jsp:include page="menu.jsp" />
-
-		<section class="contents mb-3">
-			<div class="artist border border-success d-flex p-3">
-				<div class="photo">
-					<img height="180" alt="아이유사진" src="<%= artistInfo.get("photo") %>">
-				</div>
-				<div class="info col-10">
-					<h3><%= artistInfo.get("name") %></h3>
-					<div><%= artistInfo.get("agency") %></div>
-					<div><%= artistInfo.get("debute") %> 데뷔</div>
+		
+		<section>
+			<div class="detail-info">
+				<h4>곡 정보</h4>
+				<div class="border border-success p-3 d-flex">
+				
+				<% for(Map<String, Object> song:musicList) { 
+					if(song.get("id").equals(songId)) {%>
+					
+					<div class="photo">
+						<img height="200" src="<%= song.get("thumbnail")%>">
+					</div>
+					<div class="info ml-3">
+						<h1><%= song.get("title")%></h1>
+						<div class="font-weight-bold text-success">아이유</div>
+						<div class="d-flex mt-3">
+							<div>
+								<span>앨범</span><br>
+								<span>재생시간</span><br>
+								<span>작곡가</span><br>
+								<span>작사가</span><br>
+							</div>
+							<div class="ml-3">
+								<span><%= song.get("title")%></span><br>
+								<span><%= song.get("time")%></span><br>
+								<span><%= song.get("composer")%></span><br>
+								<span><%= song.get("lyricist")%></span><br>
+							</div>
+				<%	}
+				 }%>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div class="music-list mt-3">
-				<h3>곡 목록</h3>
-				<table class="table text-center">
-					<thead>
-						<tr>
-							<th>no</th>
-							<th>제목</th>
-							<th>앨범</th>
-						</tr>
-					</thead>
-					<tbody>
-					<% for(Map<String, Object> song:musicList) { %>
-						<tr>
-							<td><%= song.get("id") %></td>
-							<td><a href="/jspTemplete/test02/test02_detail.jsp?songId=<%= song.get("id") %>"><%= song.get("title") %></a></td>
-							<td><%= song.get("album") %></td>
-						</tr>
-						
-					<% } %>
-					</tbody>
-				</table>
+			<div class="mt-5">
+				<h4>가사</h4>
+				<hr>
+				<div>가사 정보 없음</div>
 			</div>
 		
 		</section>
-
-		<jsp:include page="footer.jsp" />	
-	
-	
+		
+		<jsp:include page="footer.jsp" />
 	</div>
 </body>
 </html>
