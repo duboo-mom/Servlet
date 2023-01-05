@@ -43,7 +43,7 @@ public class Ex01Controller extends HttpServlet {
 		
 		
 		String insertQuery = "INSERT INTO `used_goods`\r\n"
-				+ "(`sellerId`, `title`, `price`, `description`. `picture`, `createdAt`, `upadatedAt`)\r\n"
+				+ "(`sellerId`, `title`, `price`, `description`, `picture`, `createdAt`, `updatedAt`)\r\n"
 				+ "VALUE\r\n"
 				+ "(3, '고양이 간식 팝니다', 2000, '저희 고양이가 까탈스러워 안먹어서 팝니다', NULL, now(), now());";
 		
