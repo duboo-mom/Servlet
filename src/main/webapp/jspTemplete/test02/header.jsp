@@ -8,11 +8,12 @@
 					
 				<form method="get" action="/jspTemplete/test02/test02_detail.jsp">	
 					<div class="input-group">
-						<input type="text" class="form-control col-10" name="titleInput">
+						<input type="text" class="form-control col-10" name="title">
 						<div class="input-group-append">
 							<button type="submit" class="btn btn-success">검색</button>				
-						</div>					
-					</form>
-				</div>
+						</div>
+					</div>					
+				</form>
+				
 			</div>
 		</header>
