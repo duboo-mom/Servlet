@@ -95,8 +95,28 @@
     musicInfo.put("composer", "아이유,이종훈,이채규");
     musicInfo.put("lyricist", "아이유");
     musicList.add(musicInfo);
+
+    String idString = request.getParameter("songId");
+    // songID null일때 parse할수 없어서 에러 발생 
+    // 그래서 조건문에 넣으려고 했는데...
+    Integer songId = Integer.parseInt(idString);
     
-    Integer songId = Integer.parseInt(request.getParameter("songId"));
+    String titleInput = request.getParameter("titleInput");
+	
+	if(idString == null) {
+		idString = "";
+	} 
+	//else {
+	//	Integer songId = Integer.parseInt(idString);
+	//	이러면 아래에서 songId 변수 없다고 나옴 ㅠ
+	//}
+	
+	if(titleInput == null) {
+		titleInput = "";
+	}
+    
+
+    
 %>
 
 	<div class="container">
@@ -109,7 +129,7 @@
 				<div class="border border-success p-3 d-flex">
 				
 				<% for(Map<String, Object> song:musicList) { 
-					if(song.get("id").equals(songId)) {%>
+					if(songId.equals(song.get("id")) || titleInput.equals(song.get("title"))) {%>
 					
 					<div class="photo">
 						<img height="200" src="<%= song.get("thumbnail")%>">

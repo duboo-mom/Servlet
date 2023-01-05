@@ -5,11 +5,14 @@
 				<h1 class="text-success">Melong</h1>			
 			</div>
 			<div class="search col-10 d-flex align-items-center">
-				<div class="input-group col-6">
-					<input type="text" class="form-control">
-					<div class="input-group-append">
-						<button type="button" class="btn btn-success">검색</button>				
-					</div>
+					
+				<form method="get" action="/jspTemplete/test02/test02_detail.jsp">	
+					<div class="input-group">
+						<input type="text" class="form-control col-10" name="titleInput">
+						<div class="input-group-append">
+							<button type="submit" class="btn btn-success">검색</button>				
+						</div>					
+					</form>
 				</div>
 			</div>
 		</header>
