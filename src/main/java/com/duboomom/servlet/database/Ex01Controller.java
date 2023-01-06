@@ -21,7 +21,9 @@ public class Ex01Controller extends HttpServlet {
 		
 		PrintWriter out = response.getWriter();
 
-		MysqlService mysqlService = new MysqlService();
+		// MysqlService에서 생성자 ..?!?!
+//		MysqlService mysqlService = new MysqlService();
+		MysqlService mysqlService = MysqlService.getInstance();
 		mysqlService.connect();
 		String selectQuery = "SELECT * FROM `used_goods`;";
 		ResultSet resultSet = mysqlService.select(selectQuery);
